@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="mySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/too_too_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.TvShowsTmdb</item>
+    </style>
+</resources>

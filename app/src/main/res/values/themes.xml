@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TvShowsTmdb" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/blue_primary</item>
+
+    </style>
+
+    <style name="Theme.TvShowsTmdb" parent="Base.Theme.TvShowsTmdb" />
+
+    <style name="Shape_image">
+    <item name="cornerSize">10%
+    </item>
+    </style>
+</resources>
