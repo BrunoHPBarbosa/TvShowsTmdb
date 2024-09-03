@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TvShowsTmdb</string>
+
+    <!-- nome app Toll bar personalizada -->
+    <string name="nome_app_tollbar">Tv Shows App</string>
+
+    <!-- textos de exemplo -->
+    <string name="nome_programa_tv">Titulo tv</string>
+    <string name="texto_descriscao_teste">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt ultricies erat eget consequat. Cras ultricies, ligula non consectetur aliquet, risus diam accumsan lorem, dapibus scelerisque purus dui euismod tortor. In euismod rhoncus sem sed vehicula. Quisque nec diam interdum, tempor elit fermentum, semper tortor. Proin ac elementum enim. Ut bibendum diam nibh, eu porta purus gravida et. Fusce finibus scelerisque magna non pellentesque.</string>
+    <string name="txt_generos">Acao, Fantasia</string>
+    <string name="hint_edi_text">Digite um seriado</string>
+    <string name="pequena_descricao_conteudo_episodio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt ultricies erat eget consequat. Cras ultricies, ligula non consectetur aliquet, risusfeu. Fusce e.</string>
+    <string name="duracao_episodio_text">41m</string>
+    <string name="numero_episodio">1</string>
+
+    <!-- texto para evento de not found -->
+    <string name="sem_poster_text">Sem Poster</string>
+    <string name="conteudo_nao_encontrado_text">Conteudo nao encontrado!</string>
+
+    <string name="text_sem_descricao">Sem Descriscao do conteudo</string>
+    <string name="min">min</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentListSearch">
+
+    <fragment
+        android:id="@+id/fragmentListSearch"
+        android:name="com.example.tvshowstmdb.ui.fragment.search.FragmentListSearch"
+        android:label="FragmentListSearch"
+        tools:layout="@layout/fragment_lista">
+        <action
+            android:id="@+id/action_fragmentListSearch_to_fragmentDetalhes"
+            app:destination="@id/fragmentDetalhes" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetalhes"
+        android:name="com.example.tvshowstmdb.ui.fragment.detalhes.FragmentDetalhes"
+        android:label="FragmentDetalhes"
+        tools:layout="@layout/fragment_detalhes">
+        <argument android:name="serieId"
+            app:argType="integer" />
+        <argument
+            android:name="seasonNumber"
+            app:argType="integer" />
+    </fragment>
+</navigation>
