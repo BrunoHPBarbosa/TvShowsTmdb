@@ -13,15 +13,15 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:maxLines="3"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt ultricies erat eget consequat. Cras ultricies, ligula non consectetur aliquet, risusfeu. Fusce e."
+        android:text="@string/pequena_descricao_conteudo_episodio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/imgTemporada"
+        app:layout_constraintTop_toBottomOf="@+id/imgTemporada" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgTemporada"
         android:layout_width="135dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
@@ -37,17 +37,37 @@
         app:srcCompat="@drawable/no_poster_found_img" />
 
     <TextView
+        android:id="@+id/txtSemPoster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@color/black"
+        android:padding="5dp"
+        android:rotation="-43"
+        android:rotationX="0"
+        android:text="Sem Poster"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/imgTemporada"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imgTemporada"
+        app:layout_constraintTop_toTopOf="@+id/imgTemporada"
+        tools:visibility="visible" />
+
+    <TextView
         android:id="@+id/txtNumeroEpisodio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="1"
+        android:text="@string/numero_episodio"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTemporada"
+        app:layout_constraintStart_toEndOf="@+id/imgTemporada"
+        app:layout_constraintTop_toTopOf="@+id/imgTemporada"
         app:layout_constraintVertical_bias="0.142" />
 
     <TextView
@@ -70,10 +90,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="41m"
+        android:text="@string/duracao_episodio_text"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTemporada"
+        app:layout_constraintStart_toEndOf="@+id/imgTemporada"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeEpisodio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
