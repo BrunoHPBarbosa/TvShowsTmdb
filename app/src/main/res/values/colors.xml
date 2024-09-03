@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_background">#FFFCFCFF</color>
     <color name="blue_primary">#72b4d4</color>
     <color name="cinza_spinner">#A09D9D</color>
     <color name="not_found">#F6E447</color>
@@ -9,7 +10,4 @@
     <color name="gradient_center_corlor">#00000000</color>
     <color name="gradient_end_color">#75FFFFFF</color>
 
-    <!-- color night -->
-    <color name="black_background">#090909</color>
-    <color name="black_loading">#25494949</color>
 </resources>
