@@ -3,9 +3,9 @@ package com.example.tvshowstmdb.ui.fragment.detalhes
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tvshowstmdb.data.model.details.DetalhesTvModel
+import com.example.tvshowstmdb.data.model.details.DetailTvModel
 import com.example.tvshowstmdb.data.model.keywords.keywordsModel
-import com.example.tvshowstmdb.data.model.temporadas.DetalhesTemporadasModel
+import com.example.tvshowstmdb.data.model.seasons.DetailSeasonModel
 import com.example.tvshowstmdb.repositorio.TvShowRespository
 import com.example.tvshowstmdb.resourcestate.ResourceState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,19 +15,18 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
-
 @HiltViewModel
 class DetalhesViewModel @Inject constructor(
     private val repository: TvShowRespository
 ) : ViewModel() {
 
     // StateFlow para Detalhes da Série
-    private val _details = MutableStateFlow<ResourceState<DetalhesTvModel>>(ResourceState.Loading())
-    val details: StateFlow<ResourceState<DetalhesTvModel>> = _details
+    private val _details = MutableStateFlow<ResourceState<DetailTvModel>>(ResourceState.Loading())
+    val details: StateFlow<ResourceState<DetailTvModel>> = _details
 
     // StateFlow para Detalhes da Temporada
-    private val _detalhesTemporada = MutableStateFlow<ResourceState<DetalhesTemporadasModel>>(ResourceState.Loading())
-    val detalhesTemporada: StateFlow<ResourceState<DetalhesTemporadasModel>> = _detalhesTemporada
+    private val _detalhesTemporada = MutableStateFlow<ResourceState<DetailSeasonModel>>(ResourceState.Loading())
+    val detalhesTemporada: StateFlow<ResourceState<DetailSeasonModel>> = _detalhesTemporada
 
     //stateFlow para keywords
     private val _keyWords = MutableStateFlow<ResourceState<keywordsModel>>(ResourceState.Loading())
@@ -45,7 +44,6 @@ class DetalhesViewModel @Inject constructor(
             }
         }
     }
-
     // Função para tratar a resposta da keyWords
     private fun handleResponseKeyWords(response: Response<keywordsModel>): ResourceState<keywordsModel> {
         return if (response.isSuccessful) {
@@ -55,8 +53,6 @@ class DetalhesViewModel @Inject constructor(
             ResourceState.Error(response.message())
         }
     }
-
-
     // Função para buscar detalhes da série
     fun fetchSeriesDetails(seriesId: Int) {
         viewModelScope.launch {
@@ -69,9 +65,8 @@ class DetalhesViewModel @Inject constructor(
             }
         }
     }
-
     // Função para tratar a resposta da série
-    private fun handleResponseSeries(response: Response<DetalhesTvModel>): ResourceState<DetalhesTvModel> {
+    private fun handleResponseSeries(response: Response<DetailTvModel>): ResourceState<DetailTvModel> {
         return if (response.isSuccessful) {
             response.body()?.let { ResourceState.Success(it) }
                 ?: ResourceState.Error("Corpo da resposta vazio")
@@ -79,7 +74,6 @@ class DetalhesViewModel @Inject constructor(
             ResourceState.Error(response.message())
         }
     }
-
     // Função para buscar detalhes da temporada
     fun fetchSeasonDetails(tvShowId: Int, seasonNumber: Int) {
         viewModelScope.launch {
@@ -92,9 +86,8 @@ class DetalhesViewModel @Inject constructor(
             }
         }
     }
-
     // Função para tratar a resposta da temporada
-    private fun handleResponseSeason(response: Response<DetalhesTemporadasModel>): ResourceState<DetalhesTemporadasModel> {
+    private fun handleResponseSeason(response: Response<DetailSeasonModel>): ResourceState<DetailSeasonModel> {
         return if (response.isSuccessful) {
             response.body()?.let { ResourceState.Success(it) }
                 ?: ResourceState.Error("Corpo da resposta vazio")

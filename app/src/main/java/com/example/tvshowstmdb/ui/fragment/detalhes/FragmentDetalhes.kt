@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,6 +16,8 @@ import com.example.tvshowstmdb.resourcestate.ResourceState
 import com.example.tvshowstmdb.ui.adapters.DetalhesEpisodiosAdapter
 import com.example.tvshowstmdb.ui.base.BaseFragment
 import com.example.tvshowstmdb.util.Constants
+import com.example.tvshowstmdb.util.hide
+import com.example.tvshowstmdb.util.show
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,9 +67,11 @@ class FragmentDetalhes : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
         super.onStart()
         initEventClick()
     }
+
     private fun setupShimmer() {
         shimmerFrameLayout.startShimmer()
     }
+
     private fun initEventClick() = with(binding) {
         imgBack.setOnClickListener {
             findNavController().popBackStack()
@@ -84,8 +87,8 @@ class FragmentDetalhes : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
                         val detalhes = resource.data
                         delay(2000)
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
-                        binding.rvTemporadas.visibility = View.VISIBLE
+                        shimmerFrameLayout.hide()
+                        binding.rvTemporadas.show()
 
                         detalhes?.seasons?.let { seasons ->
                             val spinnerAdapter = ArrayAdapter(
@@ -96,38 +99,51 @@ class FragmentDetalhes : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
                             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                             binding.spinnerTemporadas.adapter = spinnerAdapter
 
-                            binding.spinnerTemporadas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                                    val selectedSeason = seasons[position]
-                                    viewModel.fetchSeasonDetails(serieId, selectedSeason.season_number)
-                                }
+                            binding.spinnerTemporadas.onItemSelectedListener =
+                                object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(
+                                        parent: AdapterView<*>,
+                                        view: View?,
+                                        position: Int,
+                                        id: Long
+                                    ) {
+                                        val selectedSeason = seasons[position]
+                                        viewModel.fetchSeasonDetails(
+                                            serieId,
+                                            selectedSeason.season_number
+                                        )
+                                    }
 
-                                override fun onNothingSelected(parent: AdapterView<*>) {
+                                    override fun onNothingSelected(parent: AdapterView<*>) {
 
+                                    }
                                 }
-                            }
                         }
                     }
+
                     is ResourceState.Error -> {
                         showError(resource.message)
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
+                        shimmerFrameLayout.hide()
                     }
+
                     is ResourceState.Empty -> {
                         showEmptyState("Nenhuma temporada encontrada.")
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
+                        shimmerFrameLayout.hide()
                     }
+
                     is ResourceState.Loading -> {
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.VISIBLE
-                        binding.rvTemporadas.visibility = View.GONE
+                        shimmerFrameLayout.show()
+                        binding.rvTemporadas.hide()
 
                     }
                 }
             }
         }
     }
+
     private fun observeKey() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.keyWords.collect { resource ->
@@ -156,7 +172,7 @@ class FragmentDetalhes : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
         }
     }
 
-private fun observeDetails() {
+    private fun observeDetails() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.details.collect { resource ->
                 when (resource) {
@@ -168,7 +184,7 @@ private fun observeDetails() {
                             txtDescricaoTv.text = details?.overview
                             txtGeneros.text = details?.genres?.joinToString(", ") { it.name }
 
-                            if(details?.overview.isNullOrEmpty()){
+                            if (details?.overview.isNullOrEmpty()) {
                                 txtDescricaoTv.text = "Sem Descriscao do conteudo"
                             }
                             val url = Constants.BASE_URL_IMAGE
@@ -191,13 +207,16 @@ private fun observeDetails() {
                             }
                         }
                     }
+
                     is ResourceState.Error -> {
                         showError(resource.message)
 
                     }
+
                     is ResourceState.Empty -> {
                         showEmptyState("Nenhum detalhe encontrado.")
                     }
+
                     is ResourceState.Loading -> {
 
                     }
@@ -213,25 +232,28 @@ private fun observeDetails() {
                     is ResourceState.Success -> {
                         delay(3000)
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
-                        binding.rvTemporadas.visibility = View.VISIBLE
+                        shimmerFrameLayout.hide()
+                        binding.rvTemporadas.show()
                         val detalhesTemporada = resource.data
                         episodiosAdapter.submitList(detalhesTemporada?.episodes)
                     }
+
                     is ResourceState.Error -> {
                         showError(resource.message)
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
+                        shimmerFrameLayout.hide()
                     }
+
                     is ResourceState.Empty -> {
                         showEmptyState("Nenhuma temporada encontrada.")
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.GONE
+                        shimmerFrameLayout.hide()
                     }
+
                     is ResourceState.Loading -> {
                         shimmerFrameLayout.stopShimmer()
-                        shimmerFrameLayout.visibility = View.VISIBLE
-                        binding.rvTemporadas.visibility = View.GONE
+                        shimmerFrameLayout.show()
+                        binding.rvTemporadas.hide()
                     }
                 }
             }
@@ -245,8 +267,6 @@ private fun observeDetails() {
     private fun showEmptyState(message: String) {
 
     }
-
-
 
     override fun getViewBinding(
         inflater: LayoutInflater,

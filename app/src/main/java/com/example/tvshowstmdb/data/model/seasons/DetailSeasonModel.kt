@@ -1,6 +1,6 @@
-package com.example.tvshowstmdb.data.model.temporadas
+package com.example.tvshowstmdb.data.model.seasons
 
-data class DetalhesTemporadasModel(
+data class DetailSeasonModel(
     val _id: String,
     val episodes: List<Episode>,
     val id: Int,

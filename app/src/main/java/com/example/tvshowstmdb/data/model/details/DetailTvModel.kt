@@ -1,6 +1,7 @@
 package com.example.tvshowstmdb.data.model.details
 
-data class DetalhesTvModel(
+data class DetailTvModel(
+
     val adult: Boolean,
     val backdrop_path: String,
     val episode_run_time: List<Any>,

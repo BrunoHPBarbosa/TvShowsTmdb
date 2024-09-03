@@ -16,7 +16,6 @@ import com.squareup.picasso.Picasso
 
 class ListSeriesAdapter : RecyclerView.Adapter<ListSeriesAdapter.ListSeriesViewHolder>() {
 
-
     inner class ListSeriesViewHolder(
         val binding: ItemListaTvShowsBinding
     ) : ViewHolder(binding.root)
@@ -32,11 +31,11 @@ class ListSeriesAdapter : RecyclerView.Adapter<ListSeriesAdapter.ListSeriesViewH
             return oldItem == newItem
         }
     }
+
     private val differ = AsyncListDiffer(this, differCallBack)
     var seriados: List<Result>
         get() = differ.currentList
         set(value) = differ.submitList(value)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSeriesViewHolder {
         return ListSeriesViewHolder(
@@ -60,6 +59,7 @@ class ListSeriesAdapter : RecyclerView.Adapter<ListSeriesAdapter.ListSeriesViewH
                 Picasso.get()
                     .load(urlImage)
                     .into(imgPoster, object : com.squareup.picasso.Callback {
+
                         override fun onSuccess() {
                             Log.d("Picasso", "Imagem carregada com sucesso")
                         }
@@ -74,8 +74,9 @@ class ListSeriesAdapter : RecyclerView.Adapter<ListSeriesAdapter.ListSeriesViewH
             }
         }
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let{ listener ->
-                listener(series.id) }
+            onItemClickListener?.let { listener ->
+                listener(series.id)
+            }
 
         }
     }

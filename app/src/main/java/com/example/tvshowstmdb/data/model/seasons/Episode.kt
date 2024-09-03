@@ -1,4 +1,4 @@
-package com.example.tvshowstmdb.data.model.temporadas
+package com.example.tvshowstmdb.data.model.seasons
 
 data class Episode(
     val episode_number: Int,

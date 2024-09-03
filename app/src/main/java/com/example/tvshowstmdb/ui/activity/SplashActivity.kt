@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
 
-    private val binding by lazy{
+    private val binding by lazy {
         ActivitySplashBinding.inflate(layoutInflater)
     }
 
@@ -35,14 +35,11 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-
-      CoroutineScope(Dispatchers.Main).launch {
-          delay(splashTime)
-          startActivity(Intent(this@SplashActivity,MainActivity::class.java))
-          finish()
-      }
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(splashTime)
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
+        }
 
     }
 }

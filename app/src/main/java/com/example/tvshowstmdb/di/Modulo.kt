@@ -20,35 +20,35 @@ object Modulo {
     @Provides
     fun provedorOkHttpClint(): OkHttpClient {
 
-            val logging = HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }
-
-            return OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .addInterceptor { chain ->
-                    val originalRequest = chain.request()
-                    val newRequest = originalRequest.newBuilder()
-                        .addHeader("Authorization", "Bearer ${Constants.ACCESS_TOKEN}")
-                        .build()
-                    chain.proceed(newRequest)
-                }
-                .build()
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
         }
+
+        return OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .addInterceptor { chain ->
+                val originalRequest = chain.request()
+                val newRequest = originalRequest.newBuilder()
+                    .addHeader("Authorization", "Bearer ${Constants.ACCESS_TOKEN}")
+                    .build()
+                chain.proceed(newRequest)
+            }
+            .build()
+    }
+
     @Singleton
     @Provides
-    fun provedorRetrofit(client: OkHttpClient):Retrofit{
+    fun provedorRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-
-
     }
+
     @Singleton
     @Provides
-    fun provedorService(retrofit: Retrofit):ServiceApi{
+    fun provedorService(retrofit: Retrofit): ServiceApi {
         return retrofit.create(ServiceApi::class.java)
 
     }

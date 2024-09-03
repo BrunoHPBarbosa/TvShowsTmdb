@@ -12,23 +12,21 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView.Orientation
-import androidx.recyclerview.widget.RecyclerView.VERTICAL
-import com.example.tvshowstmdb.databinding.FragmentDetalhesBinding
 import com.example.tvshowstmdb.databinding.FragmentListaBinding
 import com.example.tvshowstmdb.resourcestate.ResourceState
 import com.example.tvshowstmdb.ui.adapters.ListSeriesAdapter
 import com.example.tvshowstmdb.ui.base.BaseFragment
+import com.example.tvshowstmdb.util.hide
+import com.example.tvshowstmdb.util.show
 import com.facebook.shimmer.ShimmerFrameLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>() {
+class FragmentListSearch : BaseFragment<FragmentListaBinding, SearchListViewModel>() {
 
-    private val listSerieAdapter by lazy { ListSeriesAdapter()}
+    private val listSerieAdapter by lazy { ListSeriesAdapter() }
 
     override val viewModel: SearchListViewModel by viewModels()
     private lateinit var shimmerFrameLayout: ShimmerFrameLayout
@@ -42,6 +40,7 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
         setupPesquisa()
         setupShimmer()
     }
+
     private fun setupShimmer() {
         shimmerFrameLayout.startShimmer()
     }
@@ -49,9 +48,8 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
     private fun setupPesquisa() {
         val searchEditText = binding.edtSearch
 
-
         // Configura o clique no ícone de busca
-        searchEditText.setOnEditorActionListener { v, actionId, event ->
+        searchEditText.setOnEditorActionListener { v, actionId, _->
             if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH) {
                 performSearch(v.text.toString())
                 true
@@ -66,6 +64,7 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Pode-se optar por buscar automaticamente enquanto o texto é digitado
             }
+
             override fun afterTextChanged(s: Editable?) {
                 val query = s.toString()
                 searchEditText.postDelayed({
@@ -80,24 +79,25 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
     }
 
 
-
-    private fun setupRecyclerView() = with(binding){
+    private fun setupRecyclerView() = with(binding) {
         rvListSeries.apply {
 
-            val layoutManager = GridLayoutManager(requireContext(),2)
+            val layoutManager = GridLayoutManager(requireContext(), 2)
             rvListSeries.layoutManager = layoutManager
             adapter = listSerieAdapter
 
         }
 
     }
+
     private fun clickAdapter() {
-       listSerieAdapter.setOnClickListener { serieId ->
+        listSerieAdapter.setOnClickListener { serieId ->
             val action = FragmentListSearchDirections
                 .actionFragmentListSearchToFragmentDetalhes(serieId, 1)
             findNavController().navigate(action)
         }
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun colectObserver() = lifecycleScope.launch {
         viewModel.list.collect { resource ->
@@ -106,17 +106,17 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
 
                     delay(3000)
                     shimmerFrameLayout.stopShimmer()
-                    shimmerFrameLayout.visibility = View.GONE
+                    shimmerFrameLayout.hide()
 
-                    if (resource?.data?.results.isNullOrEmpty()) {
-                        binding.rvListSeries.visibility = View.GONE
-                        binding.imgNotFound.visibility = View.VISIBLE
-                        binding.txtNotContent.visibility = View.VISIBLE
+                    if (resource.data?.results.isNullOrEmpty()) {
+                        binding.rvListSeries.hide()
+                        binding.imgNotFound.show()
+                        binding.txtNotContent.show()
                     } else {
 
-                        binding.rvListSeries.visibility = View.VISIBLE
-                        binding.imgNotFound.visibility = View.GONE
-                        binding.txtNotContent.visibility = View.GONE
+                        binding.rvListSeries.show()
+                        binding.imgNotFound.hide()
+                        binding.txtNotContent.hide()
                         resource.data?.let { values ->
                             Log.d(
                                 "FragmentListSearch",
@@ -127,24 +127,27 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
                         }
                     }
                 }
+
                 is ResourceState.Error -> {
                     shimmerFrameLayout.stopShimmer()
-                    shimmerFrameLayout.visibility = View.GONE
+                    shimmerFrameLayout.hide()
                     Log.i("FragmentListSearch", "Erro: ${resource.message}")
                 }
+
                 is ResourceState.Empty -> {
                     shimmerFrameLayout.stopShimmer()
-                    shimmerFrameLayout.visibility = View.GONE
-                    binding.imgNotFound.visibility = View.VISIBLE
-                    binding.txtNotContent.visibility = View.VISIBLE
+                    shimmerFrameLayout.hide()
+                    binding.imgNotFound.show()
+                    binding.txtNotContent.show()
                     Log.i("FragmentListSearch", "Estado vazio detectado")
                 }
+
                 is ResourceState.Loading -> {
                     shimmerFrameLayout.stopShimmer()
-                    shimmerFrameLayout.visibility = View.VISIBLE
-                    binding.rvListSeries.visibility =View.GONE
-                    binding.imgNotFound.visibility = View.GONE
-                    binding.txtNotContent.visibility = View.GONE
+                    shimmerFrameLayout.show()
+                    binding.rvListSeries.hide()
+                    binding.imgNotFound.hide()
+                    binding.txtNotContent.hide()
                     Log.i("FragmentListSearch", "Carregando dados...")
                 }
             }
@@ -156,7 +159,7 @@ class FragmentListSearch: BaseFragment<FragmentListaBinding,SearchListViewModel>
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentListaBinding =
-        FragmentListaBinding.inflate(inflater,container,false)
+        FragmentListaBinding.inflate(inflater, container, false)
 
 
 }
