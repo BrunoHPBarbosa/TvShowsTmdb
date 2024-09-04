@@ -4,7 +4,7 @@ Create a native android app, using the Marvel API.
 
 
 ## :movie_camera: Video
-<img src="https://github.com/user-attachments/assets/65364a10-1b17-4960-9b0c-3fbde6cf03eb" width="250">&emsp;<img src="https://github.com/user-attachments/assets/27f01091-140a-474a-b06e-bb8cc0f1c5b9" width="250">&emsp;<img src="https://github.com/user-attachments/assets/8c1abdc3-cb46-47f5-9ba2-4e9a25eaeded" width="250">
+<img src="https://github.com/user-attachments/assets/ad14a11f-0152-485e-9b44-c3a3b8d7e5f1" width="250">&emsp;<img src="https://github.com/user-attachments/assets/b78beb0b-35da-4517-b19a-979558485dc5" width="250">&emsp;<img src="https://github.com/user-attachments/assets/18f16fed-ef33-4a1a-bde0-b5473f7d5e32" width="250">&emsp;<img src="https://github.com/user-attachments/assets/dcc701e6-145b-46be-973b-54cf01181448" width="250">
 
 ## :camera_flash: Screenshots
 <img src="https://github.com/user-attachments/assets/04522492-e1ff-48ff-a597-fc4406b9af09" width="250">&emsp;
@@ -17,6 +17,8 @@ Create a native android app, using the Marvel API.
 
 
 
+![Screenshot_20240904_104744](https://github.com/user-attachments/assets/a59704d1-e933-4bf0-a407-e4288aabbb02)
+![Screenshot_20240904_104653](https://github.com/user-attachments/assets/d79eb15c-c8cd-45b4-9065-9c2f4b12e087)
 
 
 
