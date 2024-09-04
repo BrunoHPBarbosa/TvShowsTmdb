@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -46,33 +47,30 @@ class FragmentListSearch : BaseFragment<FragmentListaBinding, SearchListViewMode
     }
 
     private fun setupPesquisa() {
-        val searchEditText = binding.edtSearch
+        val searchView = binding.edtSearch
 
-        // Configura o clique no ícone de busca
-        searchEditText.setOnEditorActionListener { v, actionId, _->
-            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH) {
-                performSearch(v.text.toString())
-                true
-            } else {
-                false
-            }
-        }
-
-        // Adiciona um TextWatcher para buscar automaticamente enquanto o texto é digitado
-        searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Pode-se optar por buscar automaticamente enquanto o texto é digitado
+        // Configura o listener no SearchView
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    performSearch(it)
+                }
+                return true
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                val query = s.toString()
-                searchEditText.postDelayed({
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                val query = newText ?: ""
+
+                val handler = android.os.Handler()
+                handler.postDelayed({
                     performSearch(query)
-                }, 500) // 500 ms de atraso
+                }, 500)
+                return true
             }
         })
     }
+
 
     private fun performSearch(query: String) {
         viewModel.searchTvShows(query)

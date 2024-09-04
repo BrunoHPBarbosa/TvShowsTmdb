@@ -15,29 +15,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/edtSearch"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:endIconDrawable="@drawable/search_strong_icon"
-        app:endIconMode="custom"
-        app:hintTextColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/shimmerViewContainer"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/shape_search"
+        app:iconifiedByDefault="false"
+        app:layout_constraintBottom_toTopOf="@id/shimmerViewContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_search"
-            android:hint="@string/hint_edi_text"
-            android:textColorLink="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="@string/hint_edi_text"
+        app:searchIcon="@drawable/search_strong_icon" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerViewContainer"

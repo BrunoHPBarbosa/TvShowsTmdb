@@ -3,8 +3,6 @@
     <style name="Base.Theme.TvShowsTmdb" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">@color/black_loading</item>
-        <item name="backgroundColor">@color/black_background</item>
     </style>
     <style name="Theme.TvShowsTmdb" parent="Base.Theme.TvShowsTmdb" />
 </resources>
