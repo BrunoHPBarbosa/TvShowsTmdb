@@ -1,24 +1,15 @@
-# Marvel App
+# Tv Shows App
 
-Create a native android app, using the Marvel API.
+Create a native android app, using the TheMovieDb API.
 
 
 ## :movie_camera: Video
 <img src="https://github.com/user-attachments/assets/ad14a11f-0152-485e-9b44-c3a3b8d7e5f1" width="250">&emsp;<img src="https://github.com/user-attachments/assets/b78beb0b-35da-4517-b19a-979558485dc5" width="250">&emsp;<img src="https://github.com/user-attachments/assets/18f16fed-ef33-4a1a-bde0-b5473f7d5e32" width="250">&emsp;<img src="https://github.com/user-attachments/assets/dcc701e6-145b-46be-973b-54cf01181448" width="250">
 
 ## :camera_flash: Screenshots
-<img src="https://github.com/user-attachments/assets/04522492-e1ff-48ff-a597-fc4406b9af09" width="250">&emsp;
-<img src="https://github.com/user-attachments/assets/220414a8-ddb7-41b1-8f0e-06c86ea00228" width="250">&emsp;
-<img src="https://github.com/user-attachments/assets/fd8c2a49-7366-4e2c-9d2f-2dbab0072a31" width="250">&emsp;
-
-<img src="https://github.com/user-attachments/assets/43188f60-3b55-4f3d-b6d9-9e44db3a1fa0" width="250">&emsp;
-<img src="https://github.com/user-attachments/assets/8076465f-81ac-4463-8ffd-a5830084ec6b" width="250">&emsp;
-<img src="https://github.com/user-attachments/assets/8a001ab9-b67f-47f5-b559-fc6ff8be6fb3" width="250">
-
-
-
-![Screenshot_20240904_104744](https://github.com/user-attachments/assets/a59704d1-e933-4bf0-a407-e4288aabbb02)
-![Screenshot_20240904_104653](https://github.com/user-attachments/assets/d79eb15c-c8cd-45b4-9065-9c2f4b12e087)
+<img src="https://github.com/user-attachments/assets/43c890b6-823a-4637-bf43-58737d208b96" width="250">&emsp;
+<img src="https://github.com/user-attachments/assets/d79eb15c-c8cd-45b4-9065-9c2f4b12e087" width="250">&emsp;
+<img src="https://github.com/user-attachments/assets/a59704d1-e933-4bf0-a407-e4288aabbb02" width="250">&emsp;
 
 
 
