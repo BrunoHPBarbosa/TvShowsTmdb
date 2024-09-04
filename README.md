@@ -21,10 +21,11 @@ Create a native android app, using the TheMovieDb API.
 - Retrofit
 - Dagger Hilt
 - Coroutines
-- Glide
+- Picasso
+- Splash Screen
+- Shimmer Effect loading
 - Flow
 - State Flow
-- Room Database
 - Jetpack Components (ViewBinding, Navigation Components)
 
   * Clean Architecture:
@@ -38,9 +39,7 @@ Create a native android app, using the TheMovieDb API.
     - Facilidade de manutenção;
     - Testabilidade.
    
-      * Room Database
-    - A biblioteca de persistência Room oferece uma camada de abstração sobre o SQLite para permitir acesso fluente ao banco de dados, aproveitando toda a capacidade do SQLite.A persistência de dados local pode ser muito útil para apps que processam quantidades não triviais de dados estruturados. O caso de uso mais comum é armazenar em cache partes importantes de dados para que, quando o dispositivo não puder acessar a rede, o usuário ainda consiga ter acesso a esse conteúdo off-line.
-   
+     
       * Retrofit:
   - Biblioteca para se conectar a um serviço REST da Web e receber uma resposta.
   - Fonte: https://square.github.io/retrofit.
@@ -69,10 +68,11 @@ Create a native android app, using the TheMovieDb API.
   - É uma biblioteca de suporte que permite vincular componentes de interface nos seus layouts a fontes de dados no app usando um formato declarativo em vez de programaticamente.
   - Fonte:https://developer.android.com/topic/libraries/data-binding?hl=pt-br
  
- * Glide 
-  - É uma estrutura de gerenciamento de mídia e carregamento de imagens de código aberto rápida e eficiente para Android que envolve decodificação de mídia, cache de memória e disco e pool de recursos em uma interface simples e fácil de usar.
-  - Fonte:https://github.com/bumptech/glide
-  - 
-* Timber 
-  - Um logger com uma API pequena e extensível que fornece utilidade além da Logclasse normal do Android.
-  - Fonte:https://github.com/JakeWharton/timber
+ * Picasso 
+  - É uma estrutura de gerenciamento de mídia e carregamento de imagens de código aberto rápida e eficiente para Android com uma  interface simples e fácil de usar.
+
+ * Splash Screen
+   - Utlizei a nova forma de se criar uma splash screen , mais rapida e simples , mas tambem utilizei outra forma em que adiciono um gif como tela inicial do app 
+
+   * Shimmer Efeect loading
+   - Utlizei a biblioteca para criacao do shimmer efeect , um estado de loading que aparece antes do conteudo estar pronto para ser exibido , tendo um visual que da um vislumbre de como a ui sera carregda .
